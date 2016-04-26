@@ -60,6 +60,45 @@ int main(int argc, char* argv[])
 					return 0;
 		}
 	}
+	
+	if (data.input != 1)
+	{
+		printf("Input string: ");
+		scanf("%s", &data.input_file);
+	}
+	else
+	{
+		input_file = fopen(data.input_file, "r");
+		if (input_file == NULL)
+		{
+			printf("Invalid input file\n");
+			return -1;
+		}
+	}
+	
+	if (data.output == 1)
+	{
+		output_file = fopen(data.output_file, "w");
+		if (output_file == NULL)
+		{
+			printf("Invalid output file\n");
+			return -1;
+		}
+	}
+		
+	if(data.alg != 1)
+	{
+		printf("Input alg name: ");
+		scanf("%s", &data.alg_name);
+	}
+	
+	if ((strcmp(data.alg_name, "Caesar") == 0) || (strcmp(data.alg_name, "caesar") == 0));
+		//calling Caesar Cipher
+	if ((strcmp(data.alg_name, "Verrnam") == 0) || (strcmp(data.alg_name, "verrnam ") == 0));
+		//calling Verrnam Cipher
+	if ((strcmp(data.alg_name, "Viginere") == 0) || (strcmp(data.alg_name, "viginere") == 0));
+		//calling Viginere Cipher
+	
 	//...
 	return 0;
 }
