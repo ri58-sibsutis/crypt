@@ -17,6 +17,11 @@ typedef struct
 
 int main(int argc, char* argv[])
 {
+	input_struct data;
+	int i = 0, j;
+	int option;
+	FILE* input_file = NULL;
+	FILE* output_file = NULL;
 	//...
 	return 0;
 }
