@@ -8,6 +8,7 @@ typedef struct
 {
 	int input;
 	char input_file[255];
+	char input_string[255];
 	int output;
 	char output_file[255];
 	int alg;
@@ -74,6 +75,17 @@ int main(int argc, char* argv[])
 			printf("Invalid input file\n");
 			return -1;
 		}
+		while ((data.input_string[i] = fgetc (input_file)) != EOF) 
+		{
+			if (data.input_string[i] == '\n') 
+			{
+				data.input_string[i] = '\0';
+				printf("%s\n",data.input_string);
+			}
+			else i++;
+		}
+		data.input_string[i] = '\0';
+		printf("%s\n",data.input_string);
 	}
 	
 	if (data.output == 1)
