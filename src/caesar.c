@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 
-char* caesar(char* input_string, int shift)
+char* Caesar(char* input_string, int shift)
 {	
 	int i;
 	char* str = NULL;
