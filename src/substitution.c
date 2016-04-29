@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 
-char* substitution(char* input_string)
+char* Substitution(char* input_string)
 {	
 	int i, j;
 	char* str = NULL;
