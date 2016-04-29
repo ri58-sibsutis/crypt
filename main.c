@@ -110,6 +110,10 @@ int main(int argc, char* argv[])
 		//calling Verrnam Cipher
 	if ((strcmp(data.alg_name, "Viginere") == 0) || (strcmp(data.alg_name, "viginere") == 0));
 		//calling Viginere Cipher
+	if ((strcmp(data.alg_name, "Affine") == 0) || (strcmp(data.alg_name, "affine") == 0));
+		//calling Affine Cipher
+	if ((strcmp(data.alg_name, "Substitution") == 0) || (strcmp(data.alg_name, "substitution") == 0));
+		//calling Substitution Cipher
 	
 	//...
 	return 0;
