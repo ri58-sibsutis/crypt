@@ -72,7 +72,16 @@ int main(int argc, char* argv[])
 		input_file = fopen(data.input_file, "r");
 		if (input_file == NULL)
 		{
-			printf("Invalid input file\n");
+			fprintf(stderr,
+				"Invalid input file\n"
+				"Missing file\n");
+			return -1;
+		}
+		if (str_cmp(data.input_file, "txt", strlen(data.input_file) - 3) != 0)
+		{
+			fprintf(stderr,
+				"Invalid input file\n"
+				"Uncorrect type\n");
 			return -1;
 		}
 		while ((data.input_string[i] = fgetc (input_file)) != EOF) 
@@ -116,5 +125,23 @@ int main(int argc, char* argv[])
 		//calling Substitution Cipher
 	
 	//...
+	return 0;
+}
+
+int str_cmp(char* str1, char* str2, int pos)
+{
+	int i = 0;
+	while ((str1[i+pos] != '\0') && (str2[i+1] != '\0'))
+	{
+		if (str1[i+pos] > str2[i])
+			return 1;
+		if (str1[i+pos] < str2[i])
+			return -1;
+		i++;
+	}
+	if (str1[i+pos] > str2[i])
+		return 1;
+	if (str1[i+pos] < str2[i])
+		return -1;
 	return 0;
 }
