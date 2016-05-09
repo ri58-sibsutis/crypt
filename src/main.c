@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
 				}
 				break;
 			default:
-					printf("invalid command line\n");
+					fprintf(stderr, "invalid command line\n");
 					return 0;
 		}
 	}
