@@ -19,4 +19,4 @@ obj/viginere.o: src/viginere.c
 	gcc -Wall -o obj/viginere.o -c src/viginere.c
 
 clean:
-	rm -f bin/crypt obj/main.o
+	rm -f bin/crypt obj/*.o
