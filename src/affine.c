@@ -11,9 +11,6 @@ int Gcd(int a, int b)
 
 int Encrypt(int x, int a, int b, int m)
 {	
-	
-	
-		
 	int y = (a * x + b) % m;
 	return y;
 }
