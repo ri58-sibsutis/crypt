@@ -3,6 +3,10 @@
 #include <string.h>
 #include <getopt.h>
 #include <memory.h>
+#include "affine.h"
+#include "caesar.h"
+#include "viginere.h"
+#include "substitution.h"
 
 typedef struct
 {
@@ -115,18 +119,17 @@ int main(int argc, char* argv[])
 		fgets(data.alg_name, 255, stdin);
 	}
 	
-	if ((strcmp(data.alg_name, "Caesar") == 0) || (strcmp(data.alg_name, "caesar") == 0));
-		//calling Caesar Cipher
+	if ((strcmp(data.alg_name, "Caesar") == 0) || (strcmp(data.alg_name, "caesar") == 0))
+		Caesar(data.input_string, data.shift);
 	if ((strcmp(data.alg_name, "Verrnam") == 0) || (strcmp(data.alg_name, "verrnam ") == 0));
 		//calling Verrnam Cipher
-	if ((strcmp(data.alg_name, "Viginere") == 0) || (strcmp(data.alg_name, "viginere") == 0));
-		//calling Viginere Cipher
-	if ((strcmp(data.alg_name, "Affine") == 0) || (strcmp(data.alg_name, "affine") == 0));
-		//calling Affine Cipher
-	if ((strcmp(data.alg_name, "Substitution") == 0) || (strcmp(data.alg_name, "substitution") == 0));
-		//calling Substitution Cipher
-	
-	//...
+	if ((strcmp(data.alg_name, "Viginere") == 0) || (strcmp(data.alg_name, "viginere") == 0))
+		Viginere(data.input_string);
+	if ((strcmp(data.alg_name, "Affine") == 0) || (strcmp(data.alg_name, "affine") == 0))
+		Affine(data.input_string);
+	if ((strcmp(data.alg_name, "Substitution") == 0) || (strcmp(data.alg_name, "substitution") == 0))
+		Substitution(data.input_string);
+
 	return 0;
 }
 
