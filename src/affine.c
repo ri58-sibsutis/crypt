@@ -47,14 +47,12 @@ char* Affine(char* input_string)
 			if (str[i] == alphabet[j])
 			{	
 				x = Encrypt(j, a, b, m);
-				printf("Encrypt %c to %c\n", str[i], alphabet[x]);
 				str[i] = alphabet[x];
 				break;
 			}
 			else if (str[i] == toupper(alphabet[j]))
 			{	
 				x = Encrypt(j, a, b, m);
-				printf("Encrypt %c to %c\n", str[i], toupper(alphabet[x]));
 				str[i] = toupper(alphabet[x]);
 				break;
 			}
