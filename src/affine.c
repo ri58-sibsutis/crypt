@@ -25,18 +25,19 @@ char* Affine(char* input_string)
 			     'm', 'n', 'o', 'p', 'q', 'r',
 			     's', 't', 'u', 'v', 'w', 'x',
 			     'y', 'z'};
-	int a, b, m;
+	int a, b;
+	int m = 26;
 	int temp;
 	str = malloc(strlen(input_string) * sizeof(char));
 	strcpy(str, input_string);
-	printf("Input a, b, m for encryption function (a*x+b) mod m: ");
-	scanf("%d %d %d", &a, &b, &m);
-	while ((temp = Gcd(a,m))!= 1)
+	printf("Input a and b for encryption function (a*x+b) mod 26: ");
+	scanf("%d %d", &a, &b);
+	while (((temp = Gcd(a,m))!= 1) || (a == 1))
 	{	
 		printf("GCD is: %d\n", temp);
-		printf("Greatest common divisor of a and m must be equal 1! (for example: a = 4, m = 9)\n");
-		printf("Input a, b, m for encryption function (a*x+b) mod m: ");
-		scanf("%d %d %d", &a, &b, &m);
+		printf("Greatest common divisor of 'a' and 26 must be equal 1 and 'a' must be not equal 1! (for example: a = 3, 5, 7, 9...25)\n");
+		printf("Input a and b for encryption function (a*x+b) mod 26: ");
+		scanf("%d %d", &a, &b);
 	}
 	
 	for(i=0; str[i]!='\0'; i++)
@@ -61,4 +62,3 @@ char* Affine(char* input_string)
 	}
 	return str;
 }
-
