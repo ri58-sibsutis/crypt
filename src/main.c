@@ -16,10 +16,12 @@ typedef struct
 	int shift;
 }	input_struct;
 
+int str_cmp(char* str1, char* str2, int pos);
+
 int main(int argc, char* argv[])
 {
 	input_struct data;
-	int i = 0, j;
+	int i = 0;
 	int option;
 	FILE* input_file = NULL;
 	FILE* output_file = NULL;
