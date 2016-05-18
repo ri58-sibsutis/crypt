@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
 	if (data.input != 1)
 	{
 		printf("Input string: ");
-		scanf("%s", &data.input_file);
+		fgets(data.input_string, 255, stdin);
 	}
 	else
 	{
@@ -112,7 +112,7 @@ int main(int argc, char* argv[])
 	if(data.alg != 1)
 	{
 		printf("Input alg name: ");
-		scanf("%s", &data.alg_name);
+		fgets(data.alg_name, 255, stdin);
 	}
 	
 	if ((strcmp(data.alg_name, "Caesar") == 0) || (strcmp(data.alg_name, "caesar") == 0));
