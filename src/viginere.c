@@ -6,27 +6,24 @@
 char* Viginere(char input_string[])
 {
 	int i, k = strlen(input_string), j = 0, l;
-	char key[255];
-	char table[k];
-	char output_string[k];
-	FILE* output_file = NULL;
-	memset(output_string, 0, k);
+	char key[] = "LEMON";
+	int in[k];
+	int table[k];
+	char* output_string;
 	
-	printf("Input key: ");
-	scanf("%s", &key);
 	l = strlen(key);
+	
+	output_string = (char*)malloc(k * sizeof(char));
+	memset(output_string, 0, k);
 	
 	for (i = 0; i < k; i++)
 	{
-		output_string[i] = 0;
+		in[i] = (int)input_string[i] - 65;
 		
-		if (j == 5)
+		if (j == l)
 			j = 0; 
 			
-		if ((input_string[i] >= 65) && (input_string[i] <= 90))
-			table[i] = key[j] - 32;
-		else
-			table[i] = key[j];
+		table[i] = (int)key[j] - 65;
 			
 		j++;
 	}
@@ -34,10 +31,7 @@ char* Viginere(char input_string[])
 	for(i = 0; i < k; i++)
 
 			if ((input_string[i] >= 65) && (input_string[i] <= 90))
-				output_string[i] = (table[i] + input_string[i]) % 26 + 65;
-			else
-				if ((input_string[i] >= 97) && (input_string[i] <= 122))
-					output_string[i] = (table[i] + input_string[i]) % 26 + 97;
+				output_string[i] = (table[i] + in[i]) % 26 + 65;
 				else
 					output_string[i] = input_string[i];
 	output_string[i] = '\0';
