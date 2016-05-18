@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
 	FILE* input_file = NULL;
 	FILE* output_file = NULL;
 	
-	data.shift = 0;
+	data.shift = 1;
 	while((option = getopt_long(argc, argv, "i:o:a:s:", 0, 0)) != -1)
 	{
 		switch (option)
@@ -120,15 +120,15 @@ int main(int argc, char* argv[])
 	}
 	
 	if ((strcmp(data.alg_name, "Caesar") == 0) || (strcmp(data.alg_name, "caesar") == 0))
-		Caesar(data.input_string, data.shift);
+		printf("%s\n", Caesar(data.input_string, data.shift));
 	if ((strcmp(data.alg_name, "Verrnam") == 0) || (strcmp(data.alg_name, "verrnam ") == 0));
 		//calling Verrnam Cipher
 	if ((strcmp(data.alg_name, "Viginere") == 0) || (strcmp(data.alg_name, "viginere") == 0))
-		Viginere(data.input_string);
+		printf("%s\n", Viginere(data.input_string));
 	if ((strcmp(data.alg_name, "Affine") == 0) || (strcmp(data.alg_name, "affine") == 0))
-		Affine(data.input_string);
+		printf("%s\n", Affine(data.input_string));
 	if ((strcmp(data.alg_name, "Substitution") == 0) || (strcmp(data.alg_name, "substitution") == 0))
-		Substitution(data.input_string);
+		printf("%s\n", Substitution(data.input_string));
 
 	return 0;
 }
