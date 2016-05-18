@@ -22,7 +22,7 @@ static char buf[MAX_LEN] = {
   '8', '9', '"', ' '
 };
 
-int mod(int x, int y) {
+int Mod(int x, int y) {
   return x >= 0 ? x % y : y - 1 - ((-x - 1) % y);
 }
 
@@ -31,7 +31,7 @@ typedef enum {
   PLAIN
 } MODE;
 
-int getIndex(char c) {
+int GetIndex(char c) {
   int i;
   for (i=0; i < MAX_LEN; i++)
     if (buf[i] == c)
@@ -39,7 +39,7 @@ int getIndex(char c) {
   return -1;
 }
 
-char* vernam(char *msg, char *key, MODE m) {
+char* Vernam(char *msg, char *key, MODE m) {
   int i, j, k;
   int len = strlen(msg);
   char *res;
