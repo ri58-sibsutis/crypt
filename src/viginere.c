@@ -41,7 +41,7 @@ char* Viginere(char input_string[])
 				output_string[i] = (table[i] + in[i]) % 26 + 65;
 				else
 					if ((input_string[i] >= 'a') && (input_string[i] <= 'z'))
-						output_string[i] = (table[i] + in[i]) % 26 + 65;
+						output_string[i] = (table[i] + in[i]) % 26 + 97;
 						else
 							output_string[i] = input_string[i];
 	output_string[i] = '\0';
