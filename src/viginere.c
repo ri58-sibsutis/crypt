@@ -19,7 +19,13 @@ char* Viginere(char input_string[])
 	
 	for (i = 0; i < k; i++)
 	{
-		in[i] = toupper(input_string[i]) - 65;
+		if ((input_string[i] >= 'A') && (input_string[i] <= 'Z'))
+				in[i] = (int)input_string[i] - 65;
+		else
+				if ((input_string[i] >= 'a') && (input_string[i] <= 'z'))
+					in[i] = (int)input_string[i] - 97;
+				else
+					in[i] = 0;
 		
 		if (j == l)
 			j = 0; 
