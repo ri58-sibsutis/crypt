@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "viginere.h"
 
 char* Viginere(char input_string[])
@@ -18,7 +19,7 @@ char* Viginere(char input_string[])
 	
 	for (i = 0; i < k; i++)
 	{
-		in[i] = (int)input_string[i] - 65;
+		in[i] = toupper(input_string[i]) - 65;
 		
 		if (j == l)
 			j = 0; 
@@ -30,10 +31,13 @@ char* Viginere(char input_string[])
 	
 	for(i = 0; i < k; i++)
 
-			if ((input_string[i] >= 65) && (input_string[i] <= 90))
+			if ((input_string[i] >= 'A') && (input_string[i] <= 'Z'))
 				output_string[i] = (table[i] + in[i]) % 26 + 65;
 				else
-					output_string[i] = input_string[i];
+					if ((input_string[i] >= 'a') && (input_string[i] <= 'z'))
+						output_string[i] = (table[i] + in[i]) % 26 + 65;
+						else
+							output_string[i] = input_string[i];
 	output_string[i] = '\0';
 
 	return output_string;
