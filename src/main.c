@@ -15,7 +15,7 @@ typedef struct
 	char input_string[255];
 	int output;
 	char output_file[255];
-	char output_string[255];
+	char* output_string;
 	int alg;
 	char alg_name[255];
 	int shift;
