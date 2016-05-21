@@ -15,6 +15,7 @@ typedef struct
 	char input_string[255];
 	int output;
 	char output_file[255];
+	char output_string[255];
 	int alg;
 	char alg_name[255];
 	int shift;
@@ -67,7 +68,12 @@ int main(int argc, char* argv[])
 					return 0;
 		}
 	}
-	
+	if (strcmp(data.input_file, data.output_file) == 0)
+	{
+		fprintf(stderr,
+		"Invalid file name\n");
+		return -1;
+	}
 	if (data.input != 1)
 	{
 		printf("Input string: ");
@@ -83,14 +89,14 @@ int main(int argc, char* argv[])
 				"Missing file\n");
 			return -1;
 		}
-		if (str_cmp(data.input_file, "txt", strlen(data.input_file) - 3) != 0)
+		if (str_cmp(data.input_file, ".txt", strlen(data.input_file) - 4) != 0)
 		{
 			fprintf(stderr,
 				"Invalid input file\n"
 				"Uncorrect type\n");
 			return -1;
 		}
-		while ((data.input_string[i] = fgetc (input_file)) != EOF) 
+		while (((data.input_string[i] = fgetc (input_file)) != EOF) && (i < 255))
 		{
 			if (data.input_string[i] == '\n') 
 			{
@@ -112,13 +118,19 @@ int main(int argc, char* argv[])
 			return -1;
 		}
 	}
-		
+	if (str_cmp(data.output_file, ".txt", strlen(data.output_file) - 4) != 0)
+	{
+		fprintf(stderr,
+			"Invalid output file\n"
+			"Uncorrect type\n");
+		return -1;
+	}	
 	if(data.alg != 1)
 	{
 		printf("Input alg name: ");
 		fgets(data.alg_name, 255, stdin);
 	}
-	
+
 	if ((strcmp(data.alg_name, "Caesar") == 0) || (strcmp(data.alg_name, "caesar") == 0))
 		printf("%s\n", Caesar(data.input_string, data.shift));
 	if ((strcmp(data.alg_name, "Verrnam") == 0) || (strcmp(data.alg_name, "verrnam ") == 0));
@@ -130,6 +142,8 @@ int main(int argc, char* argv[])
 	if ((strcmp(data.alg_name, "Substitution") == 0) || (strcmp(data.alg_name, "substitution") == 0))
 		printf("%s\n", Substitution(data.input_string));
 
+	fputs(data.output_string, output_file);
+	
 	return 0;
 }
 
