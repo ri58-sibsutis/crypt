@@ -111,20 +111,28 @@ int main(int argc, char* argv[])
 	
 	if (data.output == 1)
 	{
-		output_file = fopen(data.output_file, "w");
-		if (output_file == NULL)
-		{
-			printf("Invalid output file\n");
-			return -1;
-		}
-	}
+
 	if (str_cmp(data.output_file, ".txt", strlen(data.output_file) - 4) != 0)
-	{
+	{	
+		
+		
+
 		fprintf(stderr,
 			"Invalid output file\n"
 			"Uncorrect type\n");
 		return -1;
-	}	
+	}
+	
+	output_file = fopen(data.output_file, "w");
+	
+	if (output_file == NULL)
+	{
+		printf("Invalid output file\n");
+		return -1;
+		
+	}
+	}
+
 	if(data.alg != 1)
 	{
 		printf("Input alg name: ");
