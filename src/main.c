@@ -143,7 +143,8 @@ int main(int argc, char* argv[])
 		output_string = Substitution(data.input_string);
 
 	fputs(output_string, output_file);
-	
+	fclose(input_file);
+	fclose(output_file);
 	return 0;
 }
 
