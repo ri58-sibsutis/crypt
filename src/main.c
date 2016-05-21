@@ -15,7 +15,6 @@ typedef struct
 	char input_string[255];
 	int output;
 	char output_file[255];
-	char* output_string;
 	int alg;
 	char alg_name[255];
 	int shift;
@@ -26,6 +25,7 @@ int str_cmp(char* str1, char* str2, int pos);
 int main(int argc, char* argv[])
 {
 	input_struct data;
+	char* output_string;
 	int i = 0;
 	int option;
 	FILE* input_file = NULL;
@@ -132,17 +132,17 @@ int main(int argc, char* argv[])
 	}
 
 	if ((strcmp(data.alg_name, "Caesar") == 0) || (strcmp(data.alg_name, "caesar") == 0))
-		data.output_string = Caesar(data.input_string, data.shift);
+		output_string = Caesar(data.input_string, data.shift);
 	if ((strcmp(data.alg_name, "Verrnam") == 0) || (strcmp(data.alg_name, "verrnam ") == 0));
 		//calling Verrnam Cipher
 	if ((strcmp(data.alg_name, "Viginere") == 0) || (strcmp(data.alg_name, "viginere") == 0))
-		data.output_string = Viginere(data.input_string);
+		output_string = Viginere(data.input_string);
 	if ((strcmp(data.alg_name, "Affine") == 0) || (strcmp(data.alg_name, "affine") == 0))
-		data.output_string = Affine(data.input_string);
+		output_string = Affine(data.input_string);
 	if ((strcmp(data.alg_name, "Substitution") == 0) || (strcmp(data.alg_name, "substitution") == 0))
-		data.output_string = Substitution(data.input_string);
+		output_string = Substitution(data.input_string);
 
-	fputs(data.output_string, output_file);
+	fputs(output_string, output_file);
 	
 	return 0;
 }
