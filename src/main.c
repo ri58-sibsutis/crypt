@@ -32,6 +32,8 @@ int main(int argc, char* argv[])
 	FILE* output_file = NULL;
 	
 	data.shift = 1;
+	output_file = fopen("output.txt", "w");
+	
 	while((option = getopt_long(argc, argv, "i:o:a:s:", 0, 0)) != -1)
 	{
 		switch (option)
@@ -114,9 +116,6 @@ int main(int argc, char* argv[])
 
 	if (str_cmp(data.output_file, ".txt", strlen(data.output_file) - 4) != 0)
 	{	
-		
-		
-
 		fprintf(stderr,
 			"Invalid output file\n"
 			"Uncorrect type\n");
@@ -139,6 +138,7 @@ int main(int argc, char* argv[])
 		fgets(data.alg_name, 255, stdin);
 	}
 
+	output_string = (char*)malloc(strlen(data.input_string) * sizeof(char));
 	if ((strcmp(data.alg_name, "Caesar") == 0) || (strcmp(data.alg_name, "caesar") == 0))
 		output_string = Caesar(data.input_string, data.shift);
 	if ((strcmp(data.alg_name, "Verrnam") == 0) || (strcmp(data.alg_name, "verrnam ") == 0));
@@ -151,6 +151,8 @@ int main(int argc, char* argv[])
 		output_string = Substitution(data.input_string);
 
 	fputs(output_string, output_file);
+	
+	free(output_string);
 	fclose(input_file);
 	fclose(output_file);
 	return 0;
