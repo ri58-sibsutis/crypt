@@ -80,6 +80,7 @@ int main(int argc, char* argv[])
 	{
 		printf("Input string: ");
 		fgets(data.input_string, 255, stdin);
+		data.input_string[strlen(data.input_string)-1] = '\0';
 	}
 	else
 	{
@@ -108,6 +109,7 @@ int main(int argc, char* argv[])
 			else i++;
 		}
 		data.input_string[i] = '\0';
+		fclose(input_file);
 		printf("%s\n",data.input_string);
 	}
 	
@@ -136,6 +138,7 @@ int main(int argc, char* argv[])
 	{
 		printf("Input alg name: ");
 		fgets(data.alg_name, 255, stdin);
+		data.alg_name[strlen(data.alg_name)-1] = '\0';
 	}
 
 	output_string = (char*)malloc(strlen(data.input_string) * sizeof(char));
@@ -153,7 +156,6 @@ int main(int argc, char* argv[])
 	fputs(output_string, output_file);
 	
 	free(output_string);
-	fclose(input_file);
 	fclose(output_file);
 	return 0;
 }
