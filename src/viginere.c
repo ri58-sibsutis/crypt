@@ -13,7 +13,7 @@ char* Viginere(char input_string[])
 	char* output_string;
 	
 	printf("Input key: ");
-	scanf("%s", &key);
+	scanf("%s", key);
 	l = strlen(key);
 	
 	output_string = (char*)malloc(k * sizeof(char));
