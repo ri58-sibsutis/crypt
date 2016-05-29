@@ -7,11 +7,13 @@
 char* Viginere(char input_string[])
 {
 	int i, k = strlen(input_string), j = 0, l;
-	char key[] = "LEMON";
+	char key[255];
 	int in[k];
 	int table[k];
 	char* output_string;
 	
+	printf("Input key: ");
+	scanf("%s", &key);
 	l = strlen(key);
 	
 	output_string = (char*)malloc(k * sizeof(char));
@@ -30,7 +32,11 @@ char* Viginere(char input_string[])
 		if (j == l)
 			j = 0; 
 			
-		table[i] = (int)key[j] - 65;
+		if ((key[j] >= 'A') && (key[j] <= 'Z'))
+				table[i] = (int)key[j]  - 65;
+		else
+				if ((key[j] >= 'a') && (key[j] <= 'z'))
+					table[i] = (int)key[j] - 97;	
 			
 		j++;
 	}
