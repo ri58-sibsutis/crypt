@@ -17,7 +17,6 @@ typedef struct
 	char output_file[255];
 	int alg;
 	char alg_name[255];
-	int shift;
 }	input_struct;
 
 int str_cmp(char* str1, char* str2, int pos);
@@ -31,10 +30,9 @@ int main(int argc, char* argv[])
 	FILE* input_file = NULL;
 	FILE* output_file = NULL;
 	
-	data.shift = 1;
 	output_file = fopen("output.txt", "w");
 	
-	while((option = getopt_long(argc, argv, "i:o:a:s:", 0, 0)) != -1)
+	while((option = getopt_long(argc, argv, "i:o:a:", 0, 0)) != -1)
 	{
 		switch (option)
 		{
@@ -57,12 +55,6 @@ int main(int argc, char* argv[])
 				{
 					data.alg = 1;
 					memcpy(data.alg_name, optarg, strlen(optarg) + 1);
-				}
-				break;
-			case 's':
-				if ((data.shift == 0) && (optarg[0] != '-') && (strlen(optarg) < 255))
-				{
-					data.shift = *optarg - 48;
 				}
 				break;
 			default:
@@ -143,7 +135,7 @@ int main(int argc, char* argv[])
 
 	output_string = (char*)malloc(strlen(data.input_string) * sizeof(char));
 	if ((strcmp(data.alg_name, "Caesar") == 0) || (strcmp(data.alg_name, "caesar") == 0))
-		output_string = Caesar(data.input_string, data.shift);
+		output_string = Caesar(data.input_string);
 	if ((strcmp(data.alg_name, "Verrnam") == 0) || (strcmp(data.alg_name, "verrnam ") == 0));
 		//calling Verrnam Cipher
 	if ((strcmp(data.alg_name, "Viginere") == 0) || (strcmp(data.alg_name, "viginere") == 0))
