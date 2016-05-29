@@ -7,6 +7,7 @@
 #include "caesar.h"
 #include "viginere.h"
 #include "substitution.h"
+#include "verrnam.h"
 
 typedef struct
 {
@@ -137,7 +138,6 @@ int main(int argc, char* argv[])
 	if ((strcmp(data.alg_name, "Caesar") == 0) || (strcmp(data.alg_name, "caesar") == 0))
 		output_string = Caesar(data.input_string);
 	if ((strcmp(data.alg_name, "Verrnam") == 0) || (strcmp(data.alg_name, "verrnam ") == 0));
-		//calling Verrnam Cipher
 	if ((strcmp(data.alg_name, "Viginere") == 0) || (strcmp(data.alg_name, "viginere") == 0))
 		output_string = Viginere(data.input_string);
 	if ((strcmp(data.alg_name, "Affine") == 0) || (strcmp(data.alg_name, "affine") == 0))
