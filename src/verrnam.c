@@ -39,7 +39,7 @@ int GetIndex(char c) {
   return -1;
 }
 
-char* Vernam(char *msg, char *key, MODE m) {
+char* Verrnam(char *msg, char *key, MODE m) {
   int i, j, k;
   int len = strlen(msg);
   char *res;
