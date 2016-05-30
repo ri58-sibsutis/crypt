@@ -135,9 +135,11 @@ int main(int argc, char* argv[])
 	}
 
 	output_string = (char*)malloc(strlen(data.input_string) * sizeof(char));
+
 	if ((strcmp(data.alg_name, "Caesar") == 0) || (strcmp(data.alg_name, "caesar") == 0))
 		output_string = Caesar(data.input_string);
-	if ((strcmp(data.alg_name, "Verrnam") == 0) || (strcmp(data.alg_name, "verrnam ") == 0));
+	if ((strcmp(data.alg_name, "Verrnam") == 0) || (strcmp(data.alg_name, "verrnam") == 0))
+		output_string = Verrnam(data.input_string);
 	if ((strcmp(data.alg_name, "Viginere") == 0) || (strcmp(data.alg_name, "viginere") == 0))
 		output_string = Viginere(data.input_string);
 	if ((strcmp(data.alg_name, "Affine") == 0) || (strcmp(data.alg_name, "affine") == 0))

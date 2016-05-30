@@ -31,7 +31,8 @@ int GetIndex(char c) {
   return -1;
 }
 
-char* Verrnam(char *input_string) {
+char* Verrnam(char *input_string) 
+{
   int i, j = 0, k;
   char key[255];
   char *table;
@@ -42,12 +43,12 @@ char* Verrnam(char *input_string) {
   scanf("%s", key);
   
   table = (char*) malloc(len * sizeof(char));
-  output_string = (char* ) malloc(len * sizeof(char));
+  output_string = malloc(strlen(input_string) * sizeof(char));
   
-	for(i = 0; i < len; i++) {
-	if (j == strlen(key))
-	j = 0;
-	return NULL;
+	for(i = 0; i < len; i++) 
+{
+	 if (j == strlen(key))
+	   j = 0;
 
 	table[i] = key[j];
 	if ((input_string[i] >= 'A') && (input_string[i] <= 'Z'))
@@ -57,8 +58,10 @@ char* Verrnam(char *input_string) {
 	j++;
 }
 	
-	for (i=0; i < len; i++) {
-		if ((j = GetIndex(input_string[i])) == -1 || (k = GetIndex(table[i])) == -1) {
+	for (i=0; i < len; i++) 
+  {
+		if ((j = GetIndex(input_string[i])) == -1 || (k = GetIndex(table[i])) == -1) 
+    {
 		free(output_string);
 		return NULL;
     }
@@ -71,6 +74,6 @@ char* Verrnam(char *input_string) {
 			output_string[i] = (char)tolower(output_string[i]);
     }      
   }
-  output_string[len - 1] = '\0';
+  output_string[len] = '\0';
   return output_string;
 }
