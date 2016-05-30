@@ -18,7 +18,9 @@ char* Caesar(char* input_string)
 	scanf("%d", &shift);
 	if (shift >= 26)
 		printf("Shift must be less than 26.\n");
-	} while (shift >= 26);
+	if (shift <= 0)
+		printf("Shift must be more than 0.\n");
+	} while ((shift >= 26) || (shift <= 0));
 	
 	for(i=0; str[i]!='\0'; i++)
 	{
