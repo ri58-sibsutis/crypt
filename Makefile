@@ -1,7 +1,7 @@
 .PHONY: clean
 
-bin/crypt: obj/main.o obj/affine.o obj/caesar.o obj/substitution.o obj/viginere.o
-	gcc -Wall -o bin/crypt obj/main.o obj/affine.o obj/caesar.o obj/substitution.o obj/viginere.o
+bin/crypt: obj/main.o obj/affine.o obj/caesar.o obj/substitution.o obj/viginere.o obj/verrnam.o
+	gcc -Wall -o bin/crypt obj/main.o obj/affine.o obj/caesar.o obj/substitution.o obj/viginere.o obj/verrnam.o
 
 obj/main.o: src/main.c
 	gcc -Wall -o obj/main.o -c src/main.c
@@ -17,6 +17,9 @@ obj/substitution.o: src/substitution.c
 
 obj/viginere.o: src/viginere.c
 	gcc -Wall -o obj/viginere.o -c src/viginere.c
+
+obj/verrnam.o: src/verrnam.c
+	gcc -Wall -o obj/verrnam.o -c src/verrnam.c
 
 clean:
 	rm -f bin/crypt obj/*.o
