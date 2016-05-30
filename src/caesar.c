@@ -12,15 +12,19 @@ char* Caesar(char* input_string)
 	char* str = NULL;
 	str = malloc(strlen(input_string) * sizeof(char));
 	strcpy(str, input_string);
-	do
-	{
+	
 	printf("Input shift: ");
 	scanf("%d", &shift);
 	if (shift >= 26)
+	{
 		printf("Shift must be less than 26.\n");
+		exit(0);
+	}
 	if (shift <= 0)
+	{
 		printf("Shift must be more than 0.\n");
-	} while ((shift >= 26) || (shift <= 0));
+		exit(0);
+	}
 	
 	for(i=0; str[i]!='\0'; i++)
 	{
