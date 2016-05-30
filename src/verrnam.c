@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
-#define MAX_LEN 64
+#define MAX_LEN 62
 
 static char buf[MAX_LEN] = {
   'A', 'B', 'C', 'D',
@@ -20,7 +20,7 @@ static char buf[MAX_LEN] = {
   'w', 'x', 'y', 'z',
   '0', '1', '2', '3',
   '4', '5', '6', '7',
-  '8', '9', '"', ' '
+  '8', '9'
 };
 
 int GetIndex(char c) {
