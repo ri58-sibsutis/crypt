@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
 #define MAX_LEN 64
 
 static char buf[MAX_LEN] = {
@@ -22,15 +23,6 @@ static char buf[MAX_LEN] = {
   '8', '9', '"', ' '
 };
 
-int Mod(int x, int y) {
-  return x >= 0 ? x % y : y - 1 - ((-x - 1) % y);
-}
-
-typedef enum {
-  CIPHER,
-  PLAIN
-} MODE;
-
 int GetIndex(char c) {
   int i;
   for (i=0; i < MAX_LEN; i++)
@@ -39,28 +31,46 @@ int GetIndex(char c) {
   return -1;
 }
 
-char* Verrnam(char *msg, char *key, MODE m) {
-  int i, j, k;
-  int len = strlen(msg);
-  char *res;
+char* Verrnam(char *input_string) {
+  int i, j = 0, k;
+  char key[255];
+  char *table;
+  int len = strlen(input_string);
+  char *output_string;
+  
+  printf("Input key: ");
+  scanf("%s", key);
+  
+  table = (char*) malloc(len * sizeof(char));
+  output_string = (char* ) malloc(len * sizeof(char));
+  
+	for(i = 0; i < len; i++) {
+	if (j == strlen(key))
+	j = 0;
+	return NULL;
 
-  if (len > strlen(key))
-    return NULL;
-
-  res = (char *) malloc(len + 1);
-
-  for (i=0; i < len; i++) {
-    if ((j = getIndex(msg[i])) == -1 || (k = getIndex(key[i])) == -1) {
-      free(res);
-      return NULL;
+	table[i] = key[j];
+	if ((input_string[i] >= 'A') && (input_string[i] <= 'Z'))
+		table[i] = (char) toupper(table[i]);
+	else 
+		if ((input_string[i] >= 'a') && (input_string[i] <= 'z'))
+	j++;
+}
+	
+	for (i=0; i < len; i++) {
+		if ((j = GetIndex(input_string[i])) == -1 || (k = GetIndex(table[i])) == -1) {
+		free(output_string);
+		return NULL;
     }
     else { 
-        if (m == PLAIN)  
-          res[i] = buf[mod(j - k, MAX_LEN)];
+		output_string[i] = buf[(j + k) % MAX_LEN];
+		if ((input_string[i] >= 'A') && (input_string[i] <= 'Z'))
+		output_string[i] = (char)toupper(output_string[i]);	
         else
-          res[i] = buf[mod(j + k, MAX_LEN)];
+        	if ((input_string[i] >= 'a') && (input_string[i] <= 'z'))
+			output_string[i] = (char)tolower(output_string[i]);
     }      
   }
-  res[len] = '\0';
-  return res;
+  output_string[len - 1] = '\0';
+  return output_string;
 }
